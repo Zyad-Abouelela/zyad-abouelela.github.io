@@ -1,0 +1,568 @@
+/* ---------- base ---------- */
+
+body {
+    margin: 0;
+    padding-top: 80px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+}
+
+body, header, section, h1, h2, h3, p, hr {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 45px;
+    color: rgb(0, 0, 0);
+}
+
+h1 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ---------- header + nav ---------- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* effet quand on scroll */
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+nav a {
+    text-align: right;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    color: rgb(0, 0, 0);
+    font-size: 1.65rem;
+    margin: 12px;
+}
+
+.separator {
+    border: none;
+    height: 2px;
+    background-color: #000000;
+    margin-bottom: 0;
+}
+
+
+/* ---------- accueil avec photo en fond ---------- */
+#hero {
+    /* prend presque tout l'ecran */
+    min-height: 85vh;
+
+    /* met le mot "Bienvenue" au centre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    /* photo de fond avec un voile noir par dessus pour la lisibilite */
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.35)),
+        url('IMG_0924.jpeg');
+    background-size: cover;
+    background-position: center;
+
+    /* texte */
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 250px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- section a propos ---------- */
+
+#a-propos {
+    padding: 120px 10%;
+}
+
+.apropos-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.apropos-texte {
+    flex: 1;
+    min-width: 300px;
+}
+
+.apropos-texte h1 {
+    font-size: 55px;
+    font-weight: 900;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* petite ligne sous le titre */
+.apropos-texte h1::after {
+    content: "";
+    width: 80px;
+    height: 4px;
+    background: #b6b2b2;
+    display: block;
+    margin-top: 10px;
+}
+
+.apropos-texte p {
+    font-size: 18px;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+
+.apropos-image-unique {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.apropos-image-unique img {
+    width: 100%;
+    max-width: 500px;  
+    border-radius: 12px;
+    object-fit: cover;
+}
+.image-box {
+    aspect-ratio: 4 / 3;   
+    border: 2px solid #b6b2b2;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ---------- blocs competences / langues / hobbies ---------- */
+
+.infos {
+    max-width: 1100px;
+    margin: 80px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 80px;
+    margin-top: 0px;
+}
+
+.bloc {
+    background: #f5f5f5;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease, box-shadow 0.2s ease;
+}
+
+.bloc h2 {
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #000;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.bloc ul {
+    padding: 0;
+    margin: 0;
+}
+
+.bloc li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 5px;
+}
+
+
+/* ---------- gros titre des sections (FORMATION, PROJETS) ---------- */
+
+.h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 110px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 110px;
+}
+
+
+/* ---------- timeline formation ---------- */
+
+.timeline {
+    position: relative;
+    max-width: 850px;
+    margin: 50px auto;
+    padding: 20px 0;
+}
+
+/* trait vertical au milieu */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: #000000;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd)  { left: 0; }
+.timeline-item:nth-child(even) { left: 50%; }
+
+/* petit rond noir sur le trait */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    height: 20px;
+    background-color: #000000;
+    border-radius: 50%;
+    border: 3px solid white;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::before  { right: -10px; }
+.timeline-item:nth-child(even)::before { left: -10px; }
+
+.content {
+    width: 90%;
+    max-width: 400px;
+    padding: 15px 20px;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+}
+
+
+/* ---------- projets ---------- */
+
+.projets {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 0 40px 100px 40px;
+}
+
+.element-projet {
+    position: relative;
+    background: #f2f2f2;
+    width: 500px;
+    padding: 30px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    min-height: 300px;
+}
+
+/* effet au survol */
+.element-projet:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.element-projet h1 {
+    font-family: serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.element-projet p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* logos des projets */
+#logo_brigade {
+    width: 110px;
+    height: 110px;
+    margin-left: 370px;
+}
+
+#logo_bd {
+    width: 110px;
+    height: 110px;
+    margin-left: 370px;
+}
+
+#logo_IA {
+    width: 130px;
+    height: 130px;
+    margin-left: 370px;
+}
+
+/* bouton fleche pour ouvrir le pdf du projet */
+.lien-projet {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background-color: #000;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: bold;
+    transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.lien-projet:hover {
+    transform: translate(4px, -4px);
+    background-color: #444;
+}
+
+
+/* ---------- contact ---------- */
+
+.contactez-moi {
+    width: 100%;
+    min-height: 30vh;
+    background-color: #f2f2f2;
+    color: #000000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 75px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* icones reseaux sociaux */
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 8px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.social-icons a:hover {
+    transform: translateY(-2px);
+    opacity: 0.8;
+}
+
+#linkedin {
+    width: 50px;
+    height: 50px;
+}
+
+#github {
+    width: 90px;
+    height: 50px;
+}
+
+
+/* ---------- adresse en bas + footer ---------- */
+
+address {
+    color: #000000;
+    margin-top: 90px;
+    background-color: white;
+    font-size: 18px;
+}
+
+.contact-info {
+    text-align: center;
+    font-style: normal;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 40px 0;
+}
+
+.contact-info strong {
+    color: #000;
+}
+
+.contact-info a.lien-bas {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a.lien-bas:hover {
+    color: #1d6fa5;
+}
+
+#footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #000000;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+}
+
+
+
+/* ---------- apercu ---------- */
+
+.apercu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 0 40px 100px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.apercu-item {
+    background: #f2f2f2;
+    width: 400px;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.apercu-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.apercu-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.apercu-item h4 {
+    font-family: serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.apercu-item p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* version mobile */
+@media (max-width: 768px) {
+    .apercu-item {
+        width: 100%;
+    }
+}
+
+
+/* ---------- responsive (mobile) ---------- */
+
+@media (max-width: 900px) {
+    .infos {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #hero {
+        font-size: 70px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .h3 {
+        font-size: 55px;
+        margin-top: 60px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    #a-propos {
+        padding: 80px 20px;
+    }
+
+    .apropos-images {
+        flex-direction: column;
+    }
+
+    .infos {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .projets {
+        padding: 0 20px 60px 20px;
+    }
+
+    .element-projet {
+        width: 100%;
+    }
+
+    /* logos centrés sur mobile */
+    #logo_brigade,
+    #logo_bd,
+    #logo_IA {
+        margin-left: 0;
+        display: block;
+        margin: 20px auto;
+    }
+}
