@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
+    <meta charset="UTF-8">
+    <title>Zyad Abou elela | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body id="top">
+
+<!------------ header + nav ------------>
+<header>
+    <h1 id="Accueil">
+        <a href="">ZYAD ABOU ELELA</a>
+    </h1>
+    <nav>
+        <a href="#top">Accueil</a>
+        <a href="#Formation">Formation</a>
+        <a href="#Projets">Projets</a> 
+        <a href="#Contact">Contact</a>
+    </nav>
+</header>
+<hr class="separator">
+
+
+<!------------ accueil ------------>
+<h2 id="hero">Bienvenue</h2>
+
+
+<!------------ a propos ------------>
+<section id="a-propos">
+    <div class="apropos-container">
+
+        <!-- texte de gauche -->
+        <div class="apropos-texte">
+            <h1>À propos de moi</h1>
+
+            <p>
+                Étudiant en BUT Informatique à Sorbonne Paris Nord, je suis passionné par le développement web,
+                les bases de données et l'intelligence artificielle. J'aime concevoir des projets techniques concrets
+                et apprendre en continu de nouvelles technologies.
+            </p>
+
+            <p>
+                En parallèle de ma formation, je développe mes compétences en programmation, modélisation de données
+                et machine learning à travers des projets variés. Passionné également par les voyages, j'aspire
+                à allier un jour l'informatique et la découverte du monde.
+            </p>
+
+            <p>
+                Après deux années consacrées à la réalisation de projets informatiques académiques et personnels,
+                je souhaite aujourd'hui rejoindre une entreprise en alternance pour mettre mes acquis en application
+                et progresser au contact d'une équipe.
+            </p>
+        </div>
+
+        <!-- images de moi -->
+        
+        <div class="apropos-image-unique">
+            <img src="photo-plage-moi.jpeg" alt="Zyad Abou Elela">
+            <img src="photo-bac.jpeg" alt="Photo Bac ">
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ---------- competences / langues / centres d'interet ---------- -->
+<section class="infos">
+
+    <div class="bloc">
+        <h2>Compétences</h2>
+        <ul>
+            <li>Python</li>
+            <li>C / C++</li>
+            <li>Java</li>
+            <li>HTML / CSS</li>
+            <li>Git / Linux</li>
+        </ul>
+    </div>
+
+    <div class="bloc">
+        <h2>Langues</h2>
+        <ul>
+            <li>Français — Natal</li>
+            <li>Anglais — C1</li>
+            <li>Espagnol — Intermédiaire</li>
+            <li>Arabe — C1</li>
+            <li>Mandarin — Notions</li>
+        </ul>
+    </div>
+
+    <div class="bloc">
+        <h2>Centres d’intérêt</h2>
+        <ul>
+            <li>Sport — Natation</li>
+            <li>Cuisine</li>
+            <li>Nouvelles technologies</li>
+            <li>Sciences</li>
+            <li>Automobile</li>
+        </ul>
+    </div>
+
+</section>
+
+
+<!-- ---------- formation (timeline) ---------- -->
+<h3 class="h3" id="Formation">FORMATION</h3>
+
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="content">
+            <h3>Université</h3>
+            <p>Bachelor Universitaire et technologique | BUT informatique<br>Sorbonne Paris Nord</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="content">
+            <h3>Stage France Deco</h3>
+            <p>Stage dans une entreprise <br>specialisé dans l'imobilier et la construction.</p>
+        </div>
+    </div>
+    <div class="timeline-item">
+        <div class="content">
+            <h3>Lycée Juliot Curie</h3>
+            <p>Bacalaureat Scientifique <br>Specialitées : Maths | Physique-chimie<br>Mention: Bien</p>
+        </div>
+    </div>
+</div>
+
+
+<!------------ projets ------------>
+<h3 class="h3" id="Projets">PROJETS</h3>
+
+<div class="projets">
+
+    <div class="element-projet">
+        <h1>Brigade Criminelle</h1>
+        <p>Exploitation et visualisation d’une base de données PostgreSQL modélisant l’activité d’une brigade criminelle,
+            composée de <strong>5 000 affaires</strong> réparties sur 6 tables relationnelles
+            (affaires, agents, individus, pièces à conviction, départements).
+            Rédaction de requêtes SQL avancées (jointures multi-tables, agrégations avec FILTER, sous-requêtes imbriquées, vues),
+            conception d’un tableau de bord <strong>Grafana</strong> à 5 panels (indicateur clé, bar chart, série temporelle, table, carte Geomap de la France),
+            et mise en place de sauvegardes logiques via <em>pg_dump</em>.<br><br>
+            Compétences : PostgreSQL | SQL avancé | Grafana | Linux<br>Modélisation relationnelle | Visualisation de données
+        </p>
+        <img src="logo_brigade.png" alt="Logo Brigade Criminelle" id="logo_brigade"/>
+
+        <!-- bouton fleche : ouvre le pdf du projet -->
+        <a class="lien-projet" href="Portfolio_Brigade_Criminelle.pdf" target="_blank" aria-label="Voir le portfolio">→</a>
+    </div>
+
+    <div class="element-projet">
+        <h1>Base de Données</h1>
+        <p>
+            Conception et implémentation en PostgreSQL d’une base de données dédiée au rapportage de la qualité des eaux de baignade pour la saison 2024.
+            Rédaction du script SQL de création des tables, modélisation via un Atelier de Génie Logiciel et peuplement
+            des données à partir de fichiers CSV officiels à l’aide de tables
+            temporaires et de requêtes de projection, dans le cadre d’un travail d’intégration et de structuration des données.<br><br>
+            Compétences : PostgreSQL | SQL | Modélisation de bases de données | Manipulation de données 
+        </p>
+        <img src="image_bd_sae.png" alt="Image Base de Données" id="logo_bd"/>
+
+        <a class="lien-projet" href="_Abouelela___Zyad__sae104.pdf" target="_blank" aria-label="Voir le portfolio">→</a>
+    </div>
+
+    <div class="element-projet">
+        <h1>Machine Learning AI</h1>
+        <p>
+            Apprentissage des bases du Machine Learning, incluant l’étude des différentes méthodes de
+            régression et de l’algorithme de Gradient Descent pour l’optimisation des modèles.
+            Ce travail s’accompagne de la manipulation de données, de leur visualisation avec Matplotlib et de leur 
+            traitement numérique avec NumPy, afin de comprendre les mécanismes fondamentaux de l’entraînement et de l’évaluation des modèles prédictifs.<br><br>
+            Compétences : Python | Machine Learning | Régression | Optimisation (Gradient Descent) Analyse de données <br>   NumPy | Matplotlib
+        </p>
+        <img src="logo_IA.png" alt="Image Machine learning" id="logo_IA"/>
+    </div>
+
+</div>
+
+
+<!-- ---------- apercu ---------- -->
+<h3 class="h3" id="Apercu">APERÇU</h3>
+
+<div class="apercu">
+
+    <div class="apercu-item">
+        <img src="./portfolio-bd/portfolio-bd/captures/13_panel_barchart_types.png" alt="Bar chart types d'affaires"/>
+        <h4>Répartition par type</h4>
+        <p>Volume des affaires par catégorie : vol, agression, escroquerie, cybercriminalité… 5 000 dossiers au total.</p>
+    </div>
+
+    <div class="apercu-item">
+        <img src="./portfolio-bd/portfolio-bd/captures/14_panel_timeseries_evolution.png" alt="Évolution mensuelle des affaires"/>
+        <h4>Évolution mensuelle</h4>
+        <p>Nombre d'affaires mois par mois sur plusieurs années, avec détection des pics d'activité.</p>
+    </div>
+
+    <div class="apercu-item">
+        <img src="./portfolio-bd/portfolio-bd/captures/16_panel_geomap_departements.png" alt="Carte des départements"/>
+        <h4>Carte des départements</h4>
+        <p>Visualisation géographique sur Grafana, la taille des cercles est proportionnelle au nombre d'affaires.</p>
+    </div>
+
+</div>
+
+
+<!------------ contact ------------>
+<section class="contactez-moi" id="Contact">
+    <h1>Contactez-moi</h1>
+    <p>Vous avez un conseil ou une question ? N’hésitez pas à me contacter !</p>
+
+    <a href="./CV_Zyad_Abou-elela.pdf" target="_blank"
+        style="background-color: #333; color: white; padding: 15px 20px; border-radius: 10px;margin: 20px; text-decoration: none; display: inline-block;">
+        Voir mon CV
+    </a>
+
+    <!-- icones reseaux -->
+    <p class="social-icons">
+        <a href="https://www.linkedin.com/in/zyad0ab" target="_blank" rel="noopener">
+            <img id="linkedin" src="logo-linkediln.png" alt="LinkedIn">
+        </a>
+        <a href="https://github.com/Zyad-Abouelela" target="_blank" rel="noopener">
+            <img id="github" src="GitHub-Logo.png" alt="GitHub">
+        </a>
+    </p>
+</section>
+
+
+<!-- --------- infos contact en bas ------------>
+<address class="contact-info">
+    <p>Email : <a class="lien-bas" href="mailto:zyad.abouelela@icloud.com">zyad.abouelela@icloud.com</a></p>
+    <p>Téléphone : <a class="lien-bas" href="tel:+33658615151">+33 6 58 61 51 51</a></p>
+    <p>LinkedIn : <a class="lien-bas" href="https://www.linkedin.com/in/zyad0ab" target="_blank" rel="noopener">linkedin.com/in/zyad</a></p>
+</address>
+
+
+<!------------ footer ------------>
+<footer id="footer">
+    &copy; 2026 Zyad. Tous droits réservés.
+</footer>
+
+
+<!------------ script : scroll smooth + header au scroll ------------>
+<script>
+    // scroll smooth quand on clique sur la nav
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href'))
+                .scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // ajoute la classe "scrolled" au header quand on descend
+    const header = document.querySelector("header");
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+    });
+</script>
+
+</body>
+</html>
