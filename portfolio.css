@@ -340,7 +340,40 @@ nav a {
     background-color: #444;
 }
 
+/* ---------- video featured (apercu) ---------- */
 
+.apercu-video {
+    max-width: 1400px;
+    margin: 0 auto 60px auto;
+    padding: 0 40px;
+}
+
+/* la video prend toute la largeur en 16/9 */
+.apercu-video video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.apercu-video h4 {
+    font-family: serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+
+.apercu-video p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
 /* ---------- contact ---------- */
 
 .contactez-moi {
