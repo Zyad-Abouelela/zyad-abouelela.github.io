@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
 
-    <!-- coloration syntaxique du code -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 
     <style>
@@ -104,7 +103,7 @@
             letter-spacing: 1px;
         }
 
-        /* ---------- galerie de visualisations ---------- */
+        /* ---------- tout les visualisations ---------- */
         .galerie {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -330,7 +329,7 @@ connexion = psycopg2.connect(
     port=5432,
     database="trafic_aerien",
     user="postgres",
-    password="VOTRE_MOT_DE_PASSE"     # ne jamais publier en clair
+    password="VOTRE_MOT_DE_PASSE"    
 )
 cursor = connexion.cursor()
 
@@ -338,7 +337,7 @@ cursor = connexion.cursor()
 payload = {
     "grant_type": "client_credentials",
     "client_id": "VOTRE_CLIENT_ID",
-    "client_secret": "VOTRE_CLIENT_SECRET"   # ne jamais publier en clair
+    "client_secret": "VOTRE_CLIENT_SECRET" 
 }
 
 reponse = requests.post(
