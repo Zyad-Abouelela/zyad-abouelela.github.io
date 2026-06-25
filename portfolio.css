@@ -585,7 +585,8 @@ address {
     /* logos centrés sur mobile */
     #logo_brigade,
     #logo_bd,
-    #logo_IA {
+    #logo_IA,
+    #logo_avion{
         margin-left: 0;
         display: block;
         margin: 20px auto;
