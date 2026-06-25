@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Trafic Aérien — OpenSky | Zyad Abou elela</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+
+    <!-- coloration syntaxique du code -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: #ffffff;
+            color: #111;
+            font-family: 'Fjalla One', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* ---------- barre du haut ---------- */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background-color: #fff;
+            border-bottom: 2px solid #000;
+        }
+
+        .topbar a.retour {
+            text-decoration: none;
+            color: #000;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        .topbar a.retour:hover { color: #555; }
+
+        .topbar .titre-haut {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- en-tete ---------- */
+        .entete {
+            text-align: center;
+            padding: 70px 20px 40px 20px;
+        }
+
+        .entete h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 90px;
+            line-height: 1;
+        }
+
+        .entete .soustitre {
+            font-size: 20px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* ---------- bloc intro ---------- */
+        .intro {
+            max-width: 850px;
+            margin: 30px auto 60px auto;
+            padding: 0 30px;
+            font-size: 18px;
+            color: #444;
+        }
+
+        .intro p { margin-bottom: 18px; }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .tags span {
+            background: #111;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        /* ---------- titres de section ---------- */
+        .titre-section {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            text-align: center;
+            margin: 90px 0 30px 0;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- galerie de visualisations ---------- */
+        .galerie {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .viz {
+            background: #f4f4f4;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .viz:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.15);
+        }
+
+        .viz img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .viz .legende {
+            padding: 16px 20px;
+        }
+
+        .viz .legende h4 {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .viz .legende p {
+            font-size: 15px;
+            color: #666;
+        }
+
+        /* ---------- blocs de code ---------- */
+        .code-zone {
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
+            padding: 0 40px;
+        }
+
+        .code-zone h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 30px;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .code-box {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .code-box pre {
+            margin: 0;
+            max-height: 480px;
+            overflow: auto;
+            border-radius: 10px;
+        }
+
+        .code-box pre code {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .btn-copier {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 6px;
+            padding: 5px 12px;
+            font-size: 13px;
+            cursor: pointer;
+            font-family: 'Fjalla One', sans-serif;
+        }
+
+        .btn-copier:hover { background: rgba(255,255,255,0.25); }
+
+        /* ---------- pied de page ---------- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 70px;
+            border-top: 1px solid #ddd;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* ---------- mobile ---------- */
+        @media (max-width: 768px) {
+            .entete h1 { font-size: 55px; }
+            .titre-section { font-size: 42px; }
+            .galerie { grid-template-columns: 1fr; }
+            .topbar { padding: 14px 20px; }
+            .topbar .titre-haut { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ---------- barre du haut ---------- -->
+<div class="topbar">
+    <a class="retour" href="index.html#Projets">← Retour au portfolio</a>
+    <span class="titre-haut">TRAFIC AÉRIEN</span>
+</div>
+
+<!-- ---------- en-tete ---------- -->
+<header class="entete">
+    <h1>Analyse du Trafic Aérien</h1>
+    <p class="soustitre">Données ouvertes OpenSky Network · PostgreSQL · Power BI</p>
+</header>
+
+<!-- ---------- intro ---------- -->
+<section class="intro">
+    <p>
+        Projet data complet : concevoir et exploiter une base de données relationnelle pour suivre
+        le trafic aérien en temps réel, à partir de l'API ouverte <strong>OpenSky Network</strong>.
+    </p>
+    <p>
+        Les états de vol (position, altitude, vitesse, pays d'origine, statut en vol ou au sol) sont
+        collectés en Python via l'API REST, historisés dans PostgreSQL à chaque relevé, puis analysés
+        en SQL (agrégations, zones géographiques, vues). Les résultats sont restitués sous forme de
+        tableaux de bord interactifs sur Power BI.
+    </p>
+
+    <div class="tags">
+        <span>Python</span>
+        <span>PostgreSQL</span>
+        <span>SQL</span>
+        <span>API REST (OAuth2)</span>
+        <span>Power BI</span>
+        <span>Modélisation</span>
+    </div>
+</section>
+
+<!-- ---------- visualisations ---------- -->
+<h2 class="titre-section">Visualisations</h2>
+
+<div class="galerie">
+
+    <!--
+      Remplace les "src" par tes captures d'écran.
+      Mets tes images dans le meme dossier que ce fichier et renomme-les,
+      ou change juste le nom dans src="...".
+    -->
+
+    <div class="viz">
+        <img src="viz_kpi.png" alt="Indicateurs clés du trafic aérien">
+        <div class="legende">
+            <h4>Indicateurs clés (KPI)</h4>
+            <p>Nombre total de relevés, avions uniques, pays, altitude et vitesse moyennes.</p>
+        </div>
+    </div>
+
+    <div class="viz">
+        <img src="viz_pays.png" alt="Top des pays par nombre de vols">
+        <div class="legende">
+            <h4>Top des pays</h4>
+            <p>Classement des pays d'origine ayant le plus d'avions captés.</p>
+        </div>
+    </div>
+
+    <div class="viz">
+        <img src="viz_carte.png" alt="Carte des vols">
+        <div class="legende">
+            <h4>Carte des vols</h4>
+            <p>Localisation géographique des aéronefs en vol (latitude / longitude).</p>
+        </div>
+    </div>
+
+    <div class="viz">
+        <img src="viz_altitudes.png" alt="Distribution des altitudes">
+        <div class="legende">
+            <h4>Distribution des altitudes</h4>
+            <p>Répartition des vols par tranche d'altitude (2000 m).</p>
+        </div>
+    </div>
+
+    <div class="viz">
+        <img src="viz_temporel.png" alt="Évolution du trafic dans le temps">
+        <div class="legende">
+            <h4>Évolution temporelle</h4>
+            <p>Nombre d'avions par collecte, pour suivre l'activité dans le temps.</p>
+        </div>
+    </div>
+
+    <div class="viz">
+        <img src="viz_zones.png" alt="Répartition par zone géographique">
+        <div class="legende">
+            <h4>Répartition par zone</h4>
+            <p>Comparaison du trafic entre Europe, Amérique du Nord et Asie.</p>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------- code python ---------- -->
+<h2 class="titre-section">Code Python — Collecte</h2>
+
+<div class="code-zone">
+    <h3>collecte_opensky.py</h3>
+    <div class="code-box">
+        <button class="btn-copier" onclick="copier(this)">Copier</button>
+        <pre><code class="language-python">import requests
+import psycopg2
+
+# Connexion a la base PostgreSQL
+connexion = psycopg2.connect(
+    host="localhost",
+    port=5432,
+    database="trafic_aerien",
+    user="postgres",
+    password="VOTRE_MOT_DE_PASSE"     # ne jamais publier en clair
+)
+cursor = connexion.cursor()
+
+# Authentification OAuth2 (OpenSky Network)
+payload = {
+    "grant_type": "client_credentials",
+    "client_id": "VOTRE_CLIENT_ID",
+    "client_secret": "VOTRE_CLIENT_SECRET"   # ne jamais publier en clair
+}
+
+reponse = requests.post(
+    "https://auth.opensky-network.org/auth/realms/opensky-network/protocol/openid-connect/token",
+    payload
+)
+data = reponse.json()
+print("Token obtenu")
+
+token = data["access_token"]
+headers = {"Authorization": "Bearer " + token}
+
+# Recuperation des etats de vol en temps reel
+avions = requests.get("https://opensky-network.org/api/states/all", headers=headers)
+avions = avions.json()
+
+listes_vol = avions["states"]
+print(len(listes_vol), "avions recuperes")
+
+# Insertion de chaque vol dans la base
+for vol in listes_vol:
+    icao24 = vol[0]
+    callsign = vol[1].strip() if vol[1] else None
+    origin_country = vol[2]
+    longitude = vol[5]
+    latitude = vol[6]
+    altitude = vol[7]
+    on_ground = vol[8]
+    velocity = vol[9]
+
+    cursor.execute(
+        """INSERT INTO releve_vols
+           (icao24, callsign, origin_country, longitude, latitude, altitude, velocity, on_ground)
+           VALUES (%s, %s, %s, %s, %s, %s, %s, %s)""",
+        (icao24, callsign, origin_country, longitude, latitude, altitude, velocity, on_ground)
+    )
+
+cursor.execute("SELECT COUNT(*) FROM releve_vols")
+print(cursor.fetchone())
+
+connexion.commit()
+cursor.close()
+connexion.close()</code></pre>
+    </div>
+</div>
+
+<!-- ---------- code sql ---------- -->
+<h2 class="titre-section">Code SQL — Base &amp; Analyses</h2>
+
+<div class="code-zone">
+    <h3>Création de la table</h3>
+    <div class="code-box">
+        <button class="btn-copier" onclick="copier(this)">Copier</button>
+        <pre><code class="language-sql">CREATE TABLE releve_vols (
+    id              SERIAL PRIMARY KEY,
+    icao24          VARCHAR(6),
+    callsign        VARCHAR(8),
+    origin_country  VARCHAR(100),
+    longitude       FLOAT,
+    latitude        FLOAT,
+    altitude        FLOAT,
+    velocity        FLOAT,
+    on_ground       BOOLEAN,
+    horodatage      TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</code></pre>
+    </div>
+</div>
+
+<div class="code-zone">
+    <h3>Requêtes d'analyse</h3>
+    <div class="code-box">
+        <button class="btn-copier" onclick="copier(this)">Copier</button>
+        <pre><code class="language-sql">-- Top 10 des pays avec le plus d'avions
+SELECT origin_country, COUNT(*) AS nombre_vols
+FROM releve_vols
+GROUP BY origin_country
+ORDER BY nombre_vols DESC
+LIMIT 10;
+
+-- Nombre d'avions en vol vs au sol
+SELECT on_ground, COUNT(*) AS nombre
+FROM releve_vols
+GROUP BY on_ground;
+
+-- Vols dans une zone precise (bounding box autour de la France)
+SELECT icao24, callsign, origin_country, longitude, latitude, altitude
+FROM releve_vols
+WHERE longitude BETWEEN -5 AND 10
+  AND latitude  BETWEEN 41 AND 51
+  AND on_ground = false;
+
+-- Repartition des avions par zone (Europe, Amerique du Nord, Asie)
+SELECT
+    CASE
+        WHEN longitude BETWEEN -5 AND 40  AND latitude BETWEEN 35 AND 70 THEN 'Europe'
+        WHEN longitude BETWEEN -130 AND -60 AND latitude BETWEEN 25 AND 55 THEN 'Amerique du Nord'
+        WHEN longitude BETWEEN 60 AND 150 AND latitude BETWEEN 10 AND 55 THEN 'Asie'
+        ELSE 'Autre'
+    END AS zone,
+    COUNT(*) AS nombre_vols
+FROM releve_vols
+WHERE on_ground = false
+GROUP BY zone
+ORDER BY nombre_vols DESC;
+
+-- Distribution des altitudes (tranches de 2000 m)
+SELECT
+    CASE
+        WHEN altitude < 2000  THEN '0 - 2000 m'
+        WHEN altitude < 4000  THEN '2000 - 4000 m'
+        WHEN altitude < 6000  THEN '4000 - 6000 m'
+        WHEN altitude < 8000  THEN '6000 - 8000 m'
+        WHEN altitude < 10000 THEN '8000 - 10000 m'
+        WHEN altitude < 12000 THEN '10000 - 12000 m'
+        ELSE '12000+ m'
+    END AS tranche_altitude,
+    COUNT(*) AS nombre_vols
+FROM releve_vols
+WHERE on_ground = false AND altitude IS NOT NULL
+GROUP BY tranche_altitude
+ORDER BY tranche_altitude;
+
+-- Statistiques generales du projet
+SELECT
+    COUNT(*)                                      AS total_releves,
+    COUNT(DISTINCT icao24)                        AS avions_uniques,
+    COUNT(DISTINCT origin_country)                AS pays,
+    ROUND(AVG(altitude)::numeric, 2)              AS altitude_moyenne_m,
+    ROUND(AVG(velocity * 3.6)::numeric, 2)        AS vitesse_moyenne_kmh,
+    MIN(horodatage)                               AS premiere_collecte,
+    MAX(horodatage)                               AS derniere_collecte
+FROM releve_vols
+WHERE on_ground = false;
+
+-- Vue : statistiques par pays
+CREATE OR REPLACE VIEW stats_par_pays AS
+SELECT origin_country,
+       COUNT(*)                                AS nombre_vols,
+       ROUND(AVG(altitude)::numeric, 2)        AS altitude_moy_m,
+       ROUND(AVG(velocity * 3.6)::numeric, 2)  AS vitesse_moy_kmh
+FROM releve_vols
+WHERE on_ground = false AND altitude IS NOT NULL
+GROUP BY origin_country;
+
+-- Vue : avions survolant la France
+CREATE OR REPLACE VIEW vols_france AS
+SELECT icao24, callsign, origin_country, longitude, latitude,
+       ROUND(altitude::numeric, 2)             AS altitude_m,
+       ROUND((velocity * 3.6)::numeric, 2)     AS vitesse_kmh,
+       horodatage
+FROM releve_vols
+WHERE longitude BETWEEN -5 AND 10
+  AND latitude  BETWEEN 41 AND 51
+  AND on_ground = false;</code></pre>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 Zyad Abou elela — Projet personnel Data
+</footer>
+
+<!-- ---------- scripts ---------- -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>
+    hljs.highlightAll();
+
+    function copier(btn) {
+        const code = btn.parentElement.querySelector("code").innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            btn.textContent = "Copié !";
+            setTimeout(() => btn.textContent = "Copier", 1500);
+        });
+    }
+</script>
+
+</body>
+</html>
